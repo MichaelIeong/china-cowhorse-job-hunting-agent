@@ -78,8 +78,89 @@ SOCIAL_PLATFORMS: dict = {
     },
 }
 
+# 互联网大厂官网招聘
+COMPANY_PLATFORMS: dict = {
+    "tencent": {
+        "name": "腾讯",
+        "base_url": "https://careers.tencent.com",
+        "campus_url": "https://join.qq.com",
+        "type": "company_official",
+    },
+    "bytedance": {
+        "name": "字节跳动",
+        "base_url": "https://jobs.bytedance.com",
+        "type": "company_official",
+    },
+    "alibaba": {
+        "name": "阿里巴巴",
+        "base_url": "https://talent.alibaba.com",
+        "type": "company_official",
+    },
+    "meituan": {
+        "name": "美团",
+        "base_url": "https://zhaopin.meituan.com",
+        "type": "company_official",
+    },
+    "jd": {
+        "name": "京东",
+        "base_url": "https://zhaopin.jd.com",
+        "campus_url": "https://campus.jd.com",
+        "type": "company_official",
+    },
+    "baidu": {
+        "name": "百度",
+        "base_url": "https://talent.baidu.com",
+        "type": "company_official",
+    },
+    "huawei": {
+        "name": "华为",
+        "base_url": "https://career.huawei.com",
+        "type": "company_official",
+    },
+    "xiaomi": {
+        "name": "小米",
+        "base_url": "https://hr.xiaomi.com",
+        "type": "company_official",
+    },
+    "netease": {
+        "name": "网易",
+        "base_url": "https://hr.163.com",
+        "type": "company_official",
+    },
+    "kuaishou": {
+        "name": "快手",
+        "base_url": "https://zhaopin.kuaishou.com",
+        "type": "company_official",
+    },
+    "pdd": {
+        "name": "拼多多",
+        "base_url": "https://careers.pinduoduo.com",
+        "type": "company_official",
+    },
+    "didi": {
+        "name": "滴滴",
+        "base_url": "https://talent.didiglobal.com",
+        "type": "company_official",
+    },
+    "ant": {
+        "name": "蚂蚁集团",
+        "base_url": "https://talent.antgroup.com",
+        "type": "company_official",
+    },
+    "microsoft": {
+        "name": "微软中国",
+        "base_url": "https://careers.microsoft.com",
+        "type": "company_official",
+    },
+    "byd": {
+        "name": "比亚迪",
+        "base_url": "https://job.byd.com",
+        "type": "company_official",
+    },
+}
+
 # 全部平台汇总
-ALL_PLATFORMS: dict = {**CAMPUS_PLATFORMS, **SOCIAL_PLATFORMS}
+ALL_PLATFORMS: dict = {**CAMPUS_PLATFORMS, **SOCIAL_PLATFORMS, **COMPANY_PLATFORMS}
 
 
 # ========== 求职类型配置 ==========

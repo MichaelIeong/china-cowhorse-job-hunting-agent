@@ -43,31 +43,37 @@
 ```
 cowhorse/
 ├── README.md                   # 项目说明
-├── claude.md                   # Claude Code 开发指引
 ├── requirements.txt            # Python 依赖
 ├── config/
 │   ├── __init__.py
 │   └── settings.py             # 全局配置（平台URL、参数等）
 ├── skills/
-│   ├── __init__.py
-│   ├── user_profile.py         # 用户画像采集与求职类型判断
-│   ├── job_search.py           # 职位搜索与聚合
-│   ├── job_shortlist.py        # 心仪岗位整理与薪资分析
-│   ├── resume_optimizer.py     # 简历优化建议
-│   └── interview_prep.py       # 面试准备
+│   ├── user_profile/           # 用户画像采集与求职类型判断
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   ├── job_search/             # 职位搜索与聚合
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   ├── job_shortlist/          # 心仪岗位整理与薪资分析
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   ├── resume_optimizer/       # 简历优化建议
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   └── interview_prep/         # 面试准备
+│       ├── skill.md
+│       └── script/main.py
 ├── data/
 │   ├── user_data.json          # 用户配置数据
 │   └── shortlist.json          # 心仪岗位列表
 ├── utils/
 │   ├── __init__.py
-│   ├── platform_adapter.py     # 各招聘平台适配器
+│   ├── exceptions.py           # 自定义异常类
+│   ├── platform_adapter.py     # 招聘平台+大厂官网适配器
 │   ├── parser.py               # 数据解析工具
 │   └── validator.py            # 输入校验
 ├── tests/
-│   ├── __init__.py
-│   ├── test_user_profile.py
-│   ├── test_job_search.py
-│   └── test_job_shortlist.py
+│   └── ...
 └── docs/
     └── development_workflow.md  # 开发流程文档
 ```

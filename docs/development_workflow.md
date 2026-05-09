@@ -88,30 +88,35 @@ cowhorse/
 ├── config/
 │   ├── __init__.py
 │   └── settings.py             # 全局配置（平台URL、参数、常量）
-├── skills/
-│   ├── __init__.py
-│   ├── user_profile.py         # Skill 1: 用户画像采集
-│   ├── job_search.py           # Skill 2: 职位搜索聚合
-│   ├── job_shortlist.py        # Skill 3: 心仪岗位整理
-│   ├── resume_optimizer.py     # Skill 4: 简历优化
-│   └── interview_prep.py       # Skill 5: 面试准备
+├── skills/                     # 每个 Skill 一个文件夹
+│   ├── user_profile/
+│   │   ├── skill.md            # Skill 元信息和使用方法
+│   │   └── script/
+│   │       └── main.py         # Skill 主逻辑入口
+│   ├── job_search/
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   ├── job_shortlist/
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   ├── resume_optimizer/
+│   │   ├── skill.md
+│   │   └── script/main.py
+│   └── interview_prep/
+│       ├── skill.md
+│       └── script/main.py
 ├── utils/
 │   ├── __init__.py
 │   ├── exceptions.py           # 自定义异常类
 │   ├── validator.py            # 输入校验工具
 │   ├── parser.py               # 数据解析工具（HTML/JSON/薪资）
-│   └── platform_adapter.py     # 招聘平台适配器（适配器模式）
+│   └── platform_adapter.py     # 招聘平台+大厂官网适配器
 ├── data/
 │   ├── .gitkeep                # 保持目录存在
 │   ├── user_data.json          # 用户画像数据（运行时生成，不入库）
 │   └── shortlist.json          # 心仪岗位列表（运行时生成，不入库）
 ├── tests/
-│   ├── __init__.py
-│   ├── test_user_profile.py
-│   ├── test_job_search.py
-│   ├── test_job_shortlist.py
-│   ├── test_resume_optimizer.py
-│   └── test_interview_prep.py
+│   └── ...
 └── docs/
     └── development_workflow.md  # 本文档
 ```
@@ -139,12 +144,14 @@ cowhorse/
 ### 单个 Skill 开发步骤
 
 1. **理解需求** - 明确该 Skill 的输入、输出、边界条件
-2. **编写测试** - 在 `tests/` 下创建对应测试文件，先写测试用例
-3. **实现功能** - 在 `skills/` 下实现 Skill 主体逻辑
-4. **补充工具** - 如需新工具函数，在 `utils/` 中添加
-5. **运行测试** - `pytest tests/test_xxx.py -v` 确保全部通过
-6. **代码检查** - `flake8` + `black` 确保代码风格统一
-7. **提交推送** - `git add` + `git commit` + `git push`
+2. **创建目录** - 在 `skills/<skill_name>/` 下创建 `skill.md` 和 `script/` 目录
+3. **编写 skill.md** - 定义元信息、入参、出参、使用方法
+4. **编写测试** - 在 `tests/` 下创建对应测试文件，先写测试用例
+5. **实现功能** - 在 `skills/<skill_name>/script/main.py` 中实现主体逻辑
+6. **补充工具** - 如需新工具函数，在 `utils/` 中添加
+7. **运行测试** - `pytest tests/test_xxx.py -v` 确保全部通过
+8. **代码检查** - `flake8` + `black` 确保代码风格统一
+9. **提交推送** - `git add` + `git commit` + `git push`
 
 ---
 
@@ -446,9 +453,10 @@ git push origin main
 
 ### 开发新 Skill 检查清单
 
-- [ ] 在 `skills/` 下创建文件，遵循模板
+- [ ] 在 `skills/<name>/` 下创建文件夹
+- [ ] 编写 `skill.md`（元信息、入参、出参、使用方法）
+- [ ] 在 `script/main.py` 中实现入口函数 `main(**kwargs) -> dict`
 - [ ] 在 `tests/` 下创建对应测试文件
-- [ ] 入口函数为 `main(**kwargs) -> dict`
 - [ ] 有输入校验（使用 `utils/validator.py`）
 - [ ] 有异常处理（不抛异常到外部）
 - [ ] 返回值格式统一 `{"success", "data", "message"}`
